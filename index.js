@@ -5,11 +5,13 @@ const app = express();
 const router = require('./routes');
 const bodyParser = require('body-parser');
 
-// const MessageController = require('./controllers/messageController');
-// const messageController = new MessageController();
-//app.use(express.static(path.join(__dirname, './message')));
+const MessageController = require('./controllers/MessageController');
+const messageController = new MessageController('message');
 
 app.use(express.static(path.join(__dirname, './phantom')));
+
+app.use(bodyParser.urlencoded({extended:true}));
+
 app.set('view engine', 'ejs');
 app.set('views',path.join(__dirname,'./views'));
 
