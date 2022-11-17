@@ -5,13 +5,14 @@ const writeFile = util.promisify(fs.writeFile);
 class MessageController{
 
     constructor(data){
-        this.dataFile = `./data/${data}.json`;
+        // this.dataFile = `./data/${data}.json`;
+        this.dataFile = `./data/message.json`;
     }
 
     async loadMessage(){
         const data = await readFile(this.dataFile,'utf-8');
         if(!data) return [];
-        return JSON.parse(data).produits
+        return JSON.parse(data);
     }
 
     async addEntry(title,message,name) {
