@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Phantom by HTML5 UP</title>
+		<title><%= pageTitle%></title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -31,11 +31,11 @@
 					<div id="main">
 						<div class="inner">
 							<header>
-								<h1>Messagerie form</h1>
+								<h1><%= pageTitle%></h1>
 							</header>
 							<section>
 								<h2>Poster votre message</h2>
-								<form method="post" action="#">
+								<form method="post" action="/message">
 									<div class="fields">
 										<div class="field half">
 											<input type="text" name="title" id="title" placeholder="Titre" />
