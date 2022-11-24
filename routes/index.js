@@ -2,13 +2,16 @@ const express = require('express');
 const {check, validationResult} = require('express-validator');
 const router = express.Router();
 
-// const messageRoute = require('./message');
-module.exports = (params) => {
-    const {messageController} = params;
+module.exports = (params1,params2) => {
+     const {messageController} = params1;
+    // console.log(messageController);
+
+    
 
     router.get('/', (requete, reponse) => {
-        reponse.render('pages/index',{pageTitle: 'Messagerie form',message: requete.body});
+        reponse.render('pages/index',{pageTitle: 'Messagerie form',message: requete.body,messageList:params2});
     });
+    
     router.post('/', [
         // check('title')
         // .trim()
@@ -23,20 +26,20 @@ module.exports = (params) => {
         // .trim()
         // .isLength({min:3})
         // .escape()
-        // .withMessage('Le nom doit avoir au moins 3 caractères est requis')
+        // .withMessage('Le nom doit avoir au moins 3 caractères est requis'),
     ], async(requete, reponse) => {
-        // const erreurs = validationResult(requete);
-        // console.log(requete.body);
+        const erreurs = validationResult(requete);
+        console.log(requete.body);
 
         let messages = {};
-        // if (!erreurs.isEmpty()){
-        //     messages = { erreurs:erreurs.array()};
-        // }else {
+        if (!erreurs.isEmpty()){
+            messages = { erreurs:erreurs.array()};
+        }else {
             console.log(messageController);
             const {title,message,name} = requete.body;
             await messageController.addEntry(title,message,name);
-        // };
-        reponse.render('pages/index',{pageTitle: 'Messagerie form',message: requete.body, messages:messages.erreurs});
+        };
+        reponse.render('pages/index',{pageTitle: 'Messagerie form',message: requete.body, messageList:params2});
     });
 
     router.use('/',(requete,reponse) => {

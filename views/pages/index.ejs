@@ -58,19 +58,22 @@
 						<div class="inner">
 							
 							<section class="tiles">
+								<% for(var i=0; i<messageList.length; i++) {%>
+								 
 								<article class="style1">
 									<span class="image">
 										<img src="images/pic01.jpg" alt="" />
 									</span>
 									<a href="">
-										<h2><%= message.title%></h2>
+										<h2><%= messageList[i].title %></h2>
 										<div class="content">
-											<p><%= message.message%></p>
+											<p><%= messageList[i].message%></p>
 											
-											<span class="author"><%= message.name%></span>
+											<span class="author"><%= messageList[i].name%></span>
 										</div>
 									</a>
 								</article>
+								<% } %>
 								
 							</section>
 						</div>
