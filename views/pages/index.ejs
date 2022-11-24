@@ -35,7 +35,7 @@
 							</header>
 							<section>
 								<h2>Poster votre message</h2>
-								<form method="post" action="">
+								<form method="post" action="/">
 									<div class="fields">
 										<div class="field half">
 											<input type="text" name="title" id="title" placeholder="Titre" />
@@ -58,18 +58,18 @@
 						<div class="inner">
 							
 							<section class="tiles">
-								<% for(var i=0; i<messageList.length; i++) {%>
+								<% for(var i=0; i<messageReel.length; i++) {%>
 								 
 								<article class="style1">
 									<span class="image">
 										<img src="images/pic01.jpg" alt="" />
 									</span>
 									<a href="">
-										<h2><%= messageList[i].title %></h2>
+										<h2><%= messageReel[i].title %></h2>
 										<div class="content">
-											<p><%= messageList[i].message%></p>
+											<p><%= messageReel[i].message%></p>
 											
-											<span class="author"><%= messageList[i].name%></span>
+											<span class="author"><%= messageReel[i].name%></span>
 										</div>
 									</a>
 								</article>

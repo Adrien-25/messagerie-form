@@ -1,17 +1,11 @@
 const express = require('express');
 const {check, validationResult} = require('express-validator');
+const MessageController = require('../controllers/MessageController');
 const router = express.Router();
 
 module.exports = (params1,params2) => {
      const {messageController} = params1;
-    // console.log(messageController);
 
-    
-
-    router.get('/', (requete, reponse) => {
-        reponse.render('pages/index',{pageTitle: 'Messagerie form',message: requete.body,messageList:params2});
-    });
-    
     router.post('/', [
         // check('title')
         // .trim()
@@ -39,8 +33,18 @@ module.exports = (params1,params2) => {
             const {title,message,name} = requete.body;
             await messageController.addEntry(title,message,name);
         };
-        reponse.render('pages/index',{pageTitle: 'Messagerie form',message: requete.body, messageList:params2});
+        const messageReel = await messageController.loadMessage();
+
+        reponse.render('pages/index',{pageTitle: 'Messagerie form',message: requete.body, messageReel:messageReel});
+         
     });
+
+    router.get('/', (requete, reponse) => {
+
+        reponse.render('pages/index',{pageTitle: 'Messagerie form',message: requete.body,messageReel:params2});
+    });
+    
+    
 
     router.use('/',(requete,reponse) => {
         reponse.render('pages/erreur',{pageTitle: "Cette page n'existe pas",page: "erreur"})

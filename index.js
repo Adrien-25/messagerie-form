@@ -17,7 +17,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.set('view engine', 'ejs');
 app.set('views',path.join(__dirname,'./views'));
 
+// const testPost = false;
 app.use('/', router({messageController},messageList));
+
 
 app.listen(port,() => {
     console.log(`Le serveur est démarré sur http://localhost:${port}`);
