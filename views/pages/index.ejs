@@ -35,6 +35,14 @@
 							</header>
 							<section>
 								<h2>Poster votre message</h2>
+								<% if(messages != 1){ %>
+									<ul class="ErreurList">
+								
+									<% for(var i=0; i<messages.length; i++) {   %>
+										<li class="ErreurItem"><%= messages[i].msg %></li>
+									<% } %>
+									</ul>
+								<% } %>
 								<form method="post" action="/">
 									<div class="fields">
 										<div class="field half">

@@ -3166,7 +3166,10 @@ input, select, textarea {
 			}
 
 		}
-
+	
+	.ErreurItem{
+		color: red;
+	}
 /* Footer */
 
 	#footer {
